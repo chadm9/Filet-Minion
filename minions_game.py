@@ -8,7 +8,7 @@ from score_handler import *
 def twitch(good_minion):
 	if good_minion.x < 50 and good_minion.x < good_minion.previous_x and good_minion.x > 0:
 		good_minion.x -= 7
-		good_minion.prebious_x = good_minion.x
+		good_minion.previous_x = good_minion.x
 	elif good_minion.x == 0:
 		good_minion.x = 1
 		good_minion. previous_x = 0
@@ -57,13 +57,13 @@ def run_game():
 
 	#INTRO WELCOME SCREEN
 	welcomeScreen(screen, title_text, title_image, continue_text, minion_yahoo)
-        
+
 	game_active = True
 	last_shown = 0
 
 	while game_active:
 		in_game = True
-		#evils.empty()	
+		#evils.empty()
 		while in_game:
 			tick += 1
 		#	last_bad_guy = 0
@@ -72,22 +72,22 @@ def run_game():
 			if tick > previous_bad_guy + good_minion.opponent_frequency:
 				evils.add(Evil(screen, "./images/evil_minion.png"))
 				previous_bad_guy = tick
-		
+
 	#		if tick % 30 == 0:
 	#				evils.add(Evil(screen, "./images/evil_minion.png"))
 
 			screen.blit(background_image, [0,0])
 
-			font = pygame.font.Font(None, 35)
+			font = pygame.font.Font("./fonts/GloriaHallelujah.ttf", 25)
 			# timer = font.render("Seconds passed: %d" % (tick / 30), True, (0,0,0))
 			lives = font.render("Lives: %d" % (good_minion.lives), True, (255,255,0))
 			score = font.render("Score: %d" % (good_minion.score), True, (255,255,255))
 			high_score = font.render("High Score: %d" % (highest_score), True, (255,255,255))
 
 			# screen.blit(timer, [1200,50])
-			screen.blit(lives, [1200,30])
-			screen.blit(score, [1200,60])
-			screen.blit(high_score, [1200,90])
+			screen.blit(lives, [1150,30])
+			screen.blit(score, [1150,60])
+			screen.blit(high_score, [1150,90])
 
 			#Draw the player
 			if good_minion.isAlive(): #added for sad_minion
@@ -116,11 +116,14 @@ def run_game():
 			if not good_minion.isAlive():
 				screen.blit(sad_minion_image, [good_minion.x, good_minion.y])
 				screen.blit(game_over_text, [310,100])
-				in_game = checkEvents(good_minion, screen, bananas, tick, banana_sound, evils, minion_yahoo) 
+				in_game = checkEvents(good_minion, screen, bananas, tick, banana_sound, evils, minion_yahoo)
                                 if tick > last_shown + 50:
                                         last_shown = tick
                 		if tick > last_shown + 30:
                         		screen.blit(continue_text, [315,220])
+				if good_minion.score == highest_score:
+					message = font.render("New High Score: You're one in a Minion!", True, (255,255,0))
+					screen.blit(message, [510,50])
 			pygame.display.flip()
 
 run_game()
