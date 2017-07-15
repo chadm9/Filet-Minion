@@ -7,8 +7,8 @@ everyone's favorite creatures from the popular "Despicable Me"
 film franchise.  Players take on the role of a good minion armed 
 with a powerful (pineapple!) banana cannon and do their best to ward off
 progressively more frantic onslaughts from hoards of evil minions.
-Compete against your friends today to see who can achieve the highest score
-and lay claim to the title of being "One in a Minion."  
+Compete against your friends to see who can achieve the highest score
+and lay claim to the title of being "One in a Minion!"  
 <br>
 <br>
 <img src='./images/FiletMinionTitleScreen.png'>
@@ -60,14 +60,14 @@ def checkEvents(good_minion, screen, bananas, tick, banana_sound, evils, minion_
 					new_banana  = Banana(screen, good_minion, direction)
 					bananas.add(new_banana)
 				banana_sound.play()
-    #If the user releases a motion key, stop player movement.
+    	#If the user releases a motion key, stop player movement.
 		elif event.type == pygame.KEYUP:
             		if event.key == 273:
                 		good_minion.shouldMove("up", False)
             		elif event.key == 274:
                 		good_minion.shouldMove("down", False)				
 				
-    #If the player is dead, start a new game if user presses enter (key 13).
+    	#If the player has died, start a new game if user presses enter (key 13).
 		elif event.type == pygame.KEYDOWN and not good_minion.isAlive():
             		if event.key == 13:
                 		good_minion.lives = 3
