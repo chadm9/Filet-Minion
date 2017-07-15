@@ -37,7 +37,7 @@ This software was authored in equal parts by the following developers:
 
 ## Code Example
 
-The following code snippet demonstrates the handling of basic user inputs form the keyboard.
+The following code snippet demonstrates the handling of basic user inputs from the keyboard.
 
 
 ```Python
