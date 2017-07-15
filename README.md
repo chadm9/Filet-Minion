@@ -62,21 +62,21 @@ def checkEvents(good_minion, screen, bananas, tick, banana_sound, evils, minion_
 				banana_sound.play()
     #If the user releases a motion key, stop player movement.
 		elif event.type == pygame.KEYUP:
-            if event.key == 273:
-                good_minion.shouldMove("up", False)
-            elif event.key == 274:
-                good_minion.shouldMove("down", False)				
+            		if event.key == 273:
+                		good_minion.shouldMove("up", False)
+            		elif event.key == 274:
+                		good_minion.shouldMove("down", False)				
 				
     #If the player is dead, start a new game if user presses enter (key 13).
 		elif event.type == pygame.KEYDOWN and not good_minion.isAlive():
-            if event.key == 13:
-                good_minion.lives = 3
-                good_minion.score = 0
-                good_minion.opponent_frequency = 100
-                evils.empty()
-                minion_yahoo.play()
-			#Exit the main game loop to restart game play.	
-                return False
+            		if event.key == 13:
+                		good_minion.lives = 3
+                		good_minion.score = 0
+                		good_minion.opponent_frequency = 100
+                		evils.empty()
+                		minion_yahoo.play()
+				#Exit the main game loop to restart game play.	
+                		return False
 
  ```
 
